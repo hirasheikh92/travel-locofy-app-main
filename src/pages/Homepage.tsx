@@ -1,4 +1,4 @@
-import { FunctionComponent, useCallback } from "react";
+import { FunctionComponent, useCallback, useState } from "react";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
@@ -8,6 +8,7 @@ import ListingItem from "../components/ListingItem";
 import Footer from "../components/Footer";
 
 const Homepage: FunctionComponent = () => {
+  const [showAll, setShowAll] = useState(false);
   const navigate = useNavigate();
 
   const onListingItemContainerClick = useCallback(() => {
@@ -16,6 +17,11 @@ const Homepage: FunctionComponent = () => {
 
   const onShowMoreButtonClick = useCallback(() => {
     //TODO: please show more list items of onclick  this button
+    if(!showAll){
+      setShowAll(true);
+    }else{
+      setShowAll(false)
+    }
   }, []);
 
   return (
